@@ -1,7 +1,7 @@
 from cgitb import text
 from webbrowser import Elinks
 g_o = "GAME OVER"
-
+print ("hola mundo")
 print ("Bienvenido al Mapa del tesoro")
 print ("a continuacion se te presentaran una serie de decisiones las cuales te llevaran al tesoro")
 caminoID = input ("Hay dos caminos, cual escoges derecha o izquierda(debes escribir derecha o izquierda):  ")
