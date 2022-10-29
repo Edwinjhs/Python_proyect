@@ -1,39 +1,46 @@
-from cgitb import text
-from webbrowser import Elinks
 g_o = "GAME OVER"
-print ("hola mundo")
 print ("Bienvenido al Mapa del tesoro")
 print ("a continuacion se te presentaran una serie de decisiones las cuales te llevaran al tesoro")
-caminoID = input ("Hay dos caminos, cual escoges derecha o izquierda(debes escribir derecha o izquierda):  ")
-if caminoID != "derecha" or caminoID != "izquierda":
-#   while caminoID != "izquierda" or caminoID != "derecha":
-#       print ("el dato ingresado es incorrecto, vuelve a intentar")
-#       caminoID = input ("Hay dos caminos, cual escoges derecha o izquierda(debes escribir derecha o izquierda):  ")
-#       if caminoID == "derecha" or caminoID== "izquierda":
-#
-# break
-    if caminoID == "derecha":
-        print ("caiste en un agujero")
-        print ("caiste sobre un nido de avestruces y hay 3 huevos, debes escoger uno de ellos  ")
-        huevo = input ("¿cual abres?(amarillo, azul, blanco)")
-        if huevo == "amarillo":
-            print ("Felicitaciones, obtuviste mucha energia para seguir tu camino  ")
-            print ("Se abrio un portal que te llevo directo al tesoro perdido, pero deberas elegir pasar entre tiburones o anguilas electricas")
-            tib_ang = input ("¿Tiburones o anguilas?  ")
-            if tib_ang == "tiburones":
-                print ("Felicitaciones obtuviste el cofre, eran tiburones gatos que son inofensivos")
-                print ("WIN")
-            elif tib_ang == "anguilas":
-                print ("Mala suerte, las anguilas te electrocutaron.")
-                print (g_o)
-            else:
-                print ("lo siento, debes introducir tiburones o anguilas")
-        elif huevo == "blanco":
-            print ("Mala suerte, habia un bebe avestruz y te comio")
+caminoID = input ("Hay dos caminos, cual escoges derecha o izquierda, debes escribir derecha o izquierda:  ").lower()
+contador = 0
+
+while caminoID != "derecha" and caminoID != "izquierda":
+        print ("debe escoger entre las opciones derecha o izquierda")      
+        contador += 1
+        caminoID = input("Hay dos caminos, cual escoges derecha o izquierda(debes escribir derecha o izquierda):  ")
+        if contador == 2:
+            print ("lo sentimos debes volver a iniciar el juego")
+            break
+# while caminoID != "izquierda":
+#     print ("debe escoger entre las opciones derecha o izquierda")
+#     caminoID= caminoID.lower ()
+#     contador += 1
+#     caminoID = input("sssssscHay dos caminos, cual escoges derecha o izquierda(debes escribir derecha o izquierda):  ")
+#     if contador == 2:
+#         print ("lo sentimos debes volver a iniciar el juego")
+#         break  
+if caminoID == "derecha":
+    print ("caiste en un agujero")
+    print ("caiste sobre un nido de avestruces y hay 3 huevos, debes escoger uno de ellos  ")
+    huevo = input ("¿cual abres?(amarillo, azul, blanco):  ").lower()
+    if huevo == "amarillo":
+        print ("Felicitaciones, obtuviste mucha energia para seguir tu camino  ")
+        print ("Se abrio un portal que te llevo directo al tesoro perdido, pero deberas elegir pasar entre tiburones o anguilas electricas")
+        tib_ang = input ("¿Tiburones o anguilas?  ").lower()
+        if tib_ang == "tiburones":
+            print ("Felicitaciones obtuviste el cofre, eran tiburones gatos que son inofensivos")
+            print ("WIN")
+        elif tib_ang == "anguilas":
+            print ("Mala suerte, las anguilas te electrocutaron.")
             print (g_o)
-        elif huevo == "azul":
-            print ("Felicidades, obtuviste mucha energia para seguir tu camino")
-            print ("Ahora se abrio un portal y encontraste una piscina")
+        else:
+            print ("lo siento, debes introducir tiburones o anguilas")
+    elif huevo == "blanco":
+        print ("Mala suerte, habia un bebe avestruz y te comio")
+        print (g_o)
+    elif huevo == "azul":
+        print ("Felicidades, obtuviste mucha energia para seguir tu camino")
+        print ("Ahora se abrio un portal y encontraste una piscina")
         nad_esp = input ("nado o espero")
         if nad_esp=="espero":
             print("Llega un huracan y mueres, "+ g_o)
@@ -46,7 +53,16 @@ if caminoID != "derecha" or caminoID != "izquierda":
                 print ("llegaste a una cueva repleta de cocodrilos, te comieron."+ g_o)
             elif cual_puert == "verde":
                 print ("llegaste directo al tesoro perdido, se encuentra encima de una palmera")
-                esca_cae = input ("¿Lo escalas o lo mueves hasta que caiga? (escalar o mover")
+                
+                esca_cae = input ("¿Lo escalas o lo mueves hasta que caiga? (escalar o mover):  ")
+                while esca_cae != "mover" or esca_cae != "escalar":
+                    print ("debe escoger entre las opciones escalar o mover")
+                    caminoID = input("¿Lo escalas o lo mueves hasta que caiga? (escalar o mover):  ")
+                    caminoID= caminoID.lower ()
+                    contador += 1
+                    if contador == 2:
+                        print ("lo sentimos debes volver a iniciar el juego")
+                    break
                 if esca_cae == "mover":
                     print ("Se te cayo encima y te aplasto" + g_o)
                 elif esca_cae == "escalar":
@@ -62,7 +78,7 @@ if caminoID != "derecha" or caminoID != "izquierda":
         print("La opcion que elejistes no esta disponible")   
 elif caminoID == "izquierda":
     print ("Encontraste una piscina")
-    nad_esp = input ("nado o espero")
+    nad_esp = input("nado o espero"  ).lower()
     if nad_esp=="espero":
         print("Llega un huracan y mueres, "+ g_o)
     elif nad_esp=="nado":
@@ -84,8 +100,6 @@ elif caminoID == "izquierda":
                 print ("debes escoger entre escalar o mover, la respuesta dada no es valida")
         else:
                 print ("debes escoger entre la puerta azul, roja o verde. la opcion dada no es valida")
-
-
 else:
     print ("debes escoger uno de los dos caminos indicados, el que escogiste no existe")
 
